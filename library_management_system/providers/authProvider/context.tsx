@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 export interface ILogin {
-  id: string;
+  //id: string;
   email: string;
   password: string;
 }
@@ -19,8 +19,8 @@ export const INITIAL_STATE: IUserStateContext = {};
 
 export interface IUserStateContext {
   readonly createUser?: IUser;
-  readonly user?: IUser;
   readonly userLogin?: ILogin;
+  readonly user?: IUser;
   readonly userId?: number;
   readonly currentUser?: IUser;
   readonly userLogOut?: IUser;

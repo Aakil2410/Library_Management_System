@@ -1,35 +1,55 @@
-'use client'
-import React, { FC, PropsWithChildren, useContext, useReducer } from 'react';
-import { message } from 'antd';
-import { useRouter } from 'next/navigation';
-import { UserReducer } from './reducer';
-import { ILogin, INITIAL_STATE, IUser, IUserActionContext, IUserStateContext, UserActionContext, UserContext } from './context';
-import { createUserRequestAction, logOutUserRequestAction, getUserIdDetailsRequestAction, loginUserRequestAction, setCurrentUserRequestAction } from './actions';
-import { instance } from './apiInstance';
+"use client";
+import React, { FC, PropsWithChildren, useContext, useReducer } from "react";
+import { message } from "antd";
+import { useRouter } from "next/navigation";
+import { UserReducer } from "./reducer";
+import {
+  ILogin,
+  INITIAL_STATE,
+  IUser,
+  IUserActionContext,
+  IUserStateContext,
+  UserActionContext,
+  UserContext,
+} from "./context";
+import {
+  createUserRequestAction,
+  logoutUserRequestAction,
+  getUserIdDetailsRequestAction,
+  loginUserRequestAction,
+  setCurrentUserRequestAction,
+} from "./actions";
+import { instance } from "./apiInstance";
 
-const UserProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
+const AuthProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
   const [state, dispatch] = useReducer(UserReducer, INITIAL_STATE);
   const { push } = useRouter();
 
- 
   const loginUser = async (payload: ILogin) => {
+    console.log("here");
     try {
-      const response = await instance.post(`${process.env.NEXT_PUBLIC_PASS}/TokenAuth/Authenticate`, payload);
+      const response = await instance.post(
+        `${process.env.NEXT_PUBLIC_PASS}/TokenAuth/Authenticate`,
+        payload
+      );
       if (response.data.success) {
-        localStorage.setItem('token', response.data.result.accessToken);
+        localStorage.setItem("token", response.data.result.accessToken);
         dispatch(loginUserRequestAction(response.data.result));
-        dispatch(getUserIdDetailsRequestAction(response.data.result.userId.user));
+        dispatch(
+          getUserIdDetailsRequestAction(response.data.result.userId.user)
+        );
+        console.log(response.data);
         if (response.data.result.userId === 1) {
-          // window.open("http://localhost:3001/dashboard", "_blank");
           push("/");
-         
-          message.success('Login successful');
+
+          message.success("Login successful");
         } else {
           push("/");
-         
-          message.success('Login successful');
+
+          message.success("Login successful");
         }
       } else {
+        console.log("why");
         message.error(`${response.data.message} \n ${response.data.details}`);
         // Toastify({
         //     text: `${response.data.message} \n ${response.data.details}`,
@@ -37,18 +57,21 @@ const UserProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
       }
     } catch (error) {
       console.log(error);
-      message.error('Login failed');
+      message.error("Login failed");
     }
   };
 
   const createUser = async (payload: IUser) => {
     try {
-      const response = await instance.post(`${process.env.NEXT_PUBLIC_PASS}/services/app/Person/Create`, payload);
+      const response = await instance.post(
+        `${process.env.NEXT_PUBLIC_PASS}/services/app/Person/Create`,
+        payload
+      );
       console.log("response:", response);
       if (response.data.success) {
-        message.success(`Hi ${response.data.result.name}. `);// ad more to message
+        message.success(`Hi ${response.data.result.name}. `); // ad more to message
         dispatch(createUserRequestAction(response.data.result));
-        push("/login");// try auto login
+        push("/login"); // try auto login
       } else {
         message.error("Failed to create user");
       }
@@ -61,12 +84,15 @@ const UserProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
   const getUserDetails = async (): Promise<IUser> => {
     const token = localStorage.getItem("token");
     try {
-      const response = await instance.get(`${process.env.NEXT_PUBLIC_PASS}/services/app/Session/GetCurrentLoginInformations`, {
-        headers: {
-          "Content-Type": "application/json",
-          'Authorization': `Bearer ${token}`
-        },
-      });
+      const response = await instance.get(
+        `${process.env.NEXT_PUBLIC_PASS}/services/app/Session/GetCurrentLoginInformations`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const user = response.data.result.user;
       dispatch(setCurrentUserRequestAction(user));
       dispatch(getUserIdDetailsRequestAction(response.data.result));
@@ -77,15 +103,17 @@ const UserProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
     }
   };
 
-  const logOutUser = () => {
-    dispatch(logOutUserRequestAction());
-    localStorage.removeItem('token');
-    push('/login');
+  const logoutUser = () => {
+    dispatch(logoutUserRequestAction());
+    localStorage.removeItem("token");
+    push("/");
   };
 
   return (
     <UserContext.Provider value={state}>
-      <UserActionContext.Provider value={{ loginUser, createUser, getUserDetails, logOutUser }}>
+      <UserActionContext.Provider
+        value={{ loginUser, createUser, getUserDetails, logoutUser }}
+      >
         {children}
       </UserActionContext.Provider>
     </UserContext.Provider>
@@ -108,15 +136,15 @@ const useLoginActions = (): IUserActionContext => {
   return context;
 };
 
-const useUser:any = (): IUserStateContext & IUserActionContext => {
+const useUser: any = (): IUserStateContext & IUserActionContext => {
   return {
-    ...useLoginState(),
-    ...useLoginActions()
+    ...useLoginState,
+    ...useLoginActions,
   };
 };
 
-export { UserProvider, useUser,useLoginState };
+export { AuthProvider, useUser, useLoginState };
 
-function Toastify(arg0: { text: string; duration: number; }) {
-    throw new Error('Function not implemented.');
+function Toastify(arg0: { text: string; duration: number }) {
+  throw new Error("Function not implemented.");
 }

@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    background-image: url('https://wallpapercave.com/wp/wp10890308.jpg');
+    background-size: cover;
+  }
+  
+  .header {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+  }
+  
+  .main {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .footer {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
