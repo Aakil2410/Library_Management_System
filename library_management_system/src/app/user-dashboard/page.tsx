@@ -1,5 +1,86 @@
 'use client'
 
+import React from 'react';
+import Head from 'next/head';
+import styles from './/userdashboard.module.css';
+
+interface Book {
+  id: string;
+  title: string;
+  author: string;
+  dueDate?: Date;
+  reserved?: boolean;
+}
+
+// Mock data - replace with real data fetching logic
+const borrowedBooks: Book[] = [
+  // ...borrowed books data
+];
+const reservedBooks: Book[] = [
+  // ...reserved books data
+];
+
+const Dashboard: React.FC = () => {
+  // Function to handle book reservation
+  const handleReservation = (bookId: string) => {
+    // Implement reservation logic here
+  };
+
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>User Dashboard</title>
+      </Head>
+      <header className={styles.header}>
+        <h1>Welcome to Your Library Dashboard</h1>
+      </header>
+      <nav className={styles.nav}>
+        <ul>
+          <li>Profile</li>
+          <li>Borrowed Books</li>
+          <li>Due Books</li>
+          <li>Reserved Books</li>
+        </ul>
+      </nav>
+      <main className={styles.main}>
+        <section className={styles.profile}>
+          {/* User profile and info */}
+        </section>
+        <section className={styles.borrowed}>
+          <h2>Borrowed Books</h2>
+          {/* List borrowed books */}
+        </section>
+        <section className={styles.due}>
+          <h2>Due Books</h2>
+          {/* List due books */}
+        </section>
+        <section className={styles.reserved}>
+          <h2>Reserved Books</h2>
+          {/* List reserved books and reservation button */}
+        </section>
+      </main>
+    </div>
+  );
+};
+
+export default Dashboard;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 import React, { useState } from 'react';
 import {
   AppstoreOutlined,
@@ -51,7 +132,7 @@ const items: MenuItem[] = [
   ]),
 ];
 
-const UserDashboard: React.FC = () => {
+const App: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   const toggleCollapsed = () => {
@@ -75,4 +156,4 @@ const UserDashboard: React.FC = () => {
   );
 };
 
-export default UserDashboard;
+export default App;*/

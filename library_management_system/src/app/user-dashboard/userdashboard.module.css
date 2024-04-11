@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  background-color: #f0f0f0;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.nav {
+  background-color: #333;
+  width: 100%;
+  padding: 10px;
+}
+
+.nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav li {
+  color: white;
+  cursor: pointer;
+}
+
+.main {
+  padding: 20px;
+}
+
+.profile, .borrowed, .due, .reserved {
+  margin-bottom: 20px;
+}
+
+/* Add more styles as needed */

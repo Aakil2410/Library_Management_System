@@ -19,12 +19,15 @@ const HomePage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <Head>
+
+
+      {/* <Head>
         <title>Library Home Page</title>
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </Head> */}
 
       <header className={styles.header}>
+        <title>Library Home Page</title>
         <Navbar />
       </header>
 

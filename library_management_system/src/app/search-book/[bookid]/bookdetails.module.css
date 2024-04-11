@@ -1,0 +1,51 @@
+/* bookDetails.module.css */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  
+  .coverImage {
+    max-width: 250px;
+    margin-right: 20px;
+  }
+  
+  .details {
+    flex: 1;
+  }
+  
+  .title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .author {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  .identifier {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 15px;
+  }
+  
+  .description {
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  /* Add more styles as needed */
+  

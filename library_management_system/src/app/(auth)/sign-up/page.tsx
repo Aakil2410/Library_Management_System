@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
-import { useLoginState, useLoginActions } from "../../../../providers/authProvider";
+import { useLoginActions } from "../../../../providers/authProvider";
 import {
   Button,
   Form,

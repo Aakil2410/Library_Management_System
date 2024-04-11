@@ -1,0 +1,27 @@
+.container {
+  background-image: url("https://e1.pxfuel.com/desktop-wallpaper/972/48/desktop-wallpaper-stack-of-books-blue-background-education-concepts-books-library-school-learning-concepts-with-resolution-2880x1800-high-quality-a-bunch-of-books.jpg");
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+  color: #2c3e50;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.features,
+.reservation,
+.mission {
+  margin-bottom: 3rem;
+}
+
+/* Add more styles as needed */

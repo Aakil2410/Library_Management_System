@@ -19,7 +19,7 @@ import {
   loginUserRequestAction,
   setCurrentUserRequestAction,
 } from "./actions";
-import { instance } from "./apiInstance";
+import { instance } from "../apiInstance";
 
 const AuthProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
   const [state, dispatch] = useReducer(UserReducer, INITIAL_STATE);
@@ -39,6 +39,7 @@ const AuthProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
           getUserIdDetailsRequestAction(response.data.result.userId.user)
         );
         console.log(response.data);
+        // do check for user type
         if (response.data.result.userId === 1) {
           push("/user-dashboard");
 
