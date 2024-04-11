@@ -40,13 +40,13 @@ const AuthProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
         );
         console.log(response.data);
         if (response.data.result.userId === 1) {
-          push("/");
+          push("/user-dashboard");
 
-          message.success("Login successful");
+          message.success(`Welcome`);
         } else {
-          push("/");
+          push("/user-dashboard");
 
-          message.success("Login successful");
+          message.success("Welcome");
         }
       } else {
         console.log("why");
@@ -71,7 +71,8 @@ const AuthProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
       if (response.data.success) {
         message.success(`Hi ${response.data.result.name}. `); // ad more to message
         dispatch(createUserRequestAction(response.data.result));
-        push("/login"); // try auto login
+        push("/sign-in"); // try auto login
+        message.info("Try logging in");
       } else {
         message.error("Failed to create user");
       }
@@ -136,14 +137,14 @@ const useLoginActions = (): IUserActionContext => {
   return context;
 };
 
-const useUser: any = (): IUserStateContext & IUserActionContext => {
-  return {
-    ...useLoginState,
-    ...useLoginActions,
-  };
-};
+// const useUser: any = (): IUserStateContext & IUserActionContext => {
+//   return {
+//     ...useLoginState(),
+//     ...useLoginActions,
+//   };
+// };
 
-export { AuthProvider, useUser, useLoginState };
+export { AuthProvider, useLoginState,useLoginActions };
 
 function Toastify(arg0: { text: string; duration: number }) {
   throw new Error("Function not implemented.");

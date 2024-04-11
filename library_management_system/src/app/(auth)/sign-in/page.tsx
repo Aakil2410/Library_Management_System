@@ -1,19 +1,18 @@
 "use client";
-// pages/signin.tsx
 
-import React, { useState } from "react";
+import React, { useActionState, useState } from "react";
 import { useStyles } from "./style";
 
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input } from "antd";
 
-import { useUser } from "../../../../providers/authProvider";
+import { useLoginActions } from "../../../../providers/authProvider";
 import { ILogin } from "../../../../providers/authProvider/context";
 import { useRouter } from "next/navigation";
 
 const SignInPage: React.FC = () => {
     
-  const { loginUser } = useUser();
+  const { loginUser } = useLoginActions();
   const { styles } = useStyles();
   const {push} = useRouter();
 
@@ -27,10 +26,7 @@ const SignInPage: React.FC = () => {
       await loginUser(values);
       console.log(values);
       console.log("works");
-    } else {
-        console.log("No login");
-        console.log("No login");
-    }
+    } 
   };
 
 
@@ -42,8 +38,8 @@ const SignInPage: React.FC = () => {
       onFinish={onFinish}
     >
       <Form.Item
-        name="username"
-        rules={[{ required: true, message: 'Please input your Username!' }]}
+        name="userNameOrEmailAddress"
+        rules={[{ required: true, message: 'Please input your E-mail!' }]}
       >
         <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
       </Form.Item>
@@ -57,16 +53,7 @@ const SignInPage: React.FC = () => {
           placeholder="Password"
         />
       </Form.Item>
-      <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
-
-        <a className="login-form-forgot" href="">
-          Forgot password
-        </a>
-      </Form.Item>
-
+     
       <Form.Item>
         <Button type="primary" htmlType="submit" className="login-form-button">
           Log in

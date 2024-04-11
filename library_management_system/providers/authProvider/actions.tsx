@@ -10,7 +10,7 @@ export enum UserActionEnum{
     GET_USER_ID = 'GET_USER_ID'
 }
 
-export const loginUserRequestAction = createAction<IUserStateContext, ILogin>(UserActionEnum.USER_LOGIN,(userLogin)=>({userLogin}))
+export const loginUserRequestAction = createAction<IUserStateContext, ILogin>(UserActionEnum.USER_LOGIN,(UserLogin)=>({UserLogin}))
 export const createUserRequestAction=createAction<IUserStateContext,IUser>(UserActionEnum.CREATE_USER,(createUser)=>({createUser}));
 export const getUserDetailsRequestAction = createAction<IUserStateContext, number>(UserActionEnum.GET_USER,(id)=>({}));
 export const logoutUserRequestAction = createAction<IUserStateContext>(UserActionEnum.USER_LOGOUT,()=>({}))

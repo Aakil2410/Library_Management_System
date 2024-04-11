@@ -1,27 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import type { CascaderProps } from "antd";
+import { useLoginState, useLoginActions } from "../../../../providers/authProvider";
 import {
-  AutoComplete,
   Button,
-  Cascader,
-  Checkbox,
-  Col,
   Form,
   Input,
-  InputNumber,
-  Row,
   Select,
 } from "antd";
 
 const { Option } = Select;
-
-interface DataNodeType {
-  value: string;
-  label: string;
-  children?: DataNodeType[];
-}
 
 const formItemLayout = {
   labelCol: {
@@ -50,26 +38,16 @@ const tailFormItemLayout = {
 const SignUp: React.FC = () => {
   const [form] = Form.useForm();
 
+  
+  const { createUser } = useLoginActions();
+
   const onFinish = (values: any) => {
     console.log("Received values of form: ", values);
-  };
-
-  const [autoCompleteResult, setAutoCompleteResult] = useState<string[]>([]);
-
-  const onWebsiteChange = (value: string) => {
-    if (!value) {
-      setAutoCompleteResult([]);
-    } else {
-      setAutoCompleteResult(
-        [".com", ".org", ".net"].map((domain) => `${value}${domain}`)
-      );
+    //const roleNames = ['user'];
+    if (createUser) {
+      createUser({ ...values });
     }
   };
-
-  const websiteOptions = autoCompleteResult.map((website) => ({
-    label: website,
-    value: website,
-  }));
 
   return (
     <Form

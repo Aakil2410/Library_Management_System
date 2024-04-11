@@ -2,16 +2,18 @@ import { createContext } from "react";
 
 export interface ILogin {
   //id: string;
-  email: string;
+  userNameOrEmailAddress: string;
   password: string;
 }
 
 export interface IUser {
-  id: string;
+  //d: string;
   name: string;
   surname: string;
+  gender: string
+  email: string;
   contactNumber: string;
-  emailAddress: string;
+  address: string;
   password: string;
 }
 
@@ -19,7 +21,7 @@ export const INITIAL_STATE: IUserStateContext = {};
 
 export interface IUserStateContext {
   readonly createUser?: IUser;
-  readonly userLogin?: ILogin;
+  readonly UserLogin?: ILogin;
   readonly user?: IUser;
   readonly userId?: number;
   readonly currentUser?: IUser;
