@@ -3,6 +3,7 @@
 import React from 'react';
 import Head from 'next/head';
 import styles from './/userdashboard.module.css';
+import BooksBorrowed from './books-borrowed/page';
 
 interface Book {
   id: string;
@@ -15,6 +16,7 @@ interface Book {
 // Mock data - replace with real data fetching logic
 const borrowedBooks: Book[] = [
   // ...borrowed books data
+
 ];
 const reservedBooks: Book[] = [
   // ...reserved books data
@@ -34,31 +36,8 @@ const Dashboard: React.FC = () => {
       <header className={styles.header}>
         <h1>Welcome to Your Library Dashboard</h1>
       </header>
-      <nav className={styles.nav}>
-        <ul>
-          <li>Profile</li>
-          <li>Borrowed Books</li>
-          <li>Due Books</li>
-          <li>Reserved Books</li>
-        </ul>
-      </nav>
-      <main className={styles.main}>
-        <section className={styles.profile}>
-          {/* User profile and info */}
-        </section>
-        <section className={styles.borrowed}>
-          <h2>Borrowed Books</h2>
-          {/* List borrowed books */}
-        </section>
-        <section className={styles.due}>
-          <h2>Due Books</h2>
-          {/* List due books */}
-        </section>
-        <section className={styles.reserved}>
-          <h2>Reserved Books</h2>
-          {/* List reserved books and reservation button */}
-        </section>
-      </main>
+      
+
     </div>
   );
 };

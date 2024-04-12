@@ -13,8 +13,8 @@ const Navbar: React.FC = () => {
         <li><a href="/search-book">Find Book</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
-        // Add more navigation links as needed
       </ul>
+      {/* Condition to check if user is logged in */}
       <Button type="primary" href="/sign-in">Sign In</Button>
       <Button type="dashed" href="/sign-up">Sign Up</Button>
     </nav>
