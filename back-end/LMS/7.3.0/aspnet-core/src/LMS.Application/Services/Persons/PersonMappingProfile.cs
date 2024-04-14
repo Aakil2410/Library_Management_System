@@ -28,7 +28,8 @@ namespace LMS.Services.Persons
                 .ForMember(x => x.Address, m => m.MapFrom(x => x.Address))
                 .ForMember(x => x.RegistrationDate, m => m.MapFrom(x => x.RegistrationDate))
                 .ForMember(x => x.BooksBorrowed, m => m.MapFrom(x => x.BooksBorrowed))
-                .ForMember(x => x.FinesDue, m => m.MapFrom(x => x.FinesDue));
+                .ForMember(x => x.FinesDue, m => m.MapFrom(x => x.FinesDue))
+                .ForMember(x => x.RoleNames, m => m.MapFrom(x => x.RoleNames));
 
 
             CreateMap<CreatePersonDto, Person>()
@@ -40,7 +41,10 @@ namespace LMS.Services.Persons
                 .ForMember(x => x.Address, m => m.MapFrom(x => x.Address))
                 .ForMember(x => x.RegistrationDate, m => m.MapFrom(x => x.RegistrationDate))
                 .ForMember(x => x.BooksBorrowed, m => m.MapFrom(x => x.BooksBorrowed))
-                .ForMember(x => x.FinesDue, m => m.MapFrom(x => x.FinesDue));
+                .ForMember(x => x.FinesDue, m => m.MapFrom(x => x.FinesDue))
+                .ForMember(x => x.RoleNames, m => m.MapFrom(x => x.RoleNames));
+
+
 
             CreateMap<PersonDto, Person>()
                .ForMember(e => e.Id, d => d.Ignore());

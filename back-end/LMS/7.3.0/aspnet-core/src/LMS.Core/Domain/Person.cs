@@ -29,6 +29,8 @@ namespace LMS.Domain
 
         public virtual User User { get; set; }
 
+        public string[] RoleNames { get; set; }
+
         public override string ToString()
         {
             return FullName;

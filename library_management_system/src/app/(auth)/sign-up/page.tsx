@@ -49,6 +49,8 @@ const SignUp: React.FC = () => {
   };
 
   return (
+    <>
+    <h1>Sign Up</h1>
     <Form
       {...formItemLayout}
       form={form}
@@ -188,8 +190,11 @@ const SignUp: React.FC = () => {
         <Button type="primary" htmlType="submit">
           Register
         </Button>
+        <br/>
+        Already have an account? <a href="./sign-in">sign in!</a>
       </Form.Item>
     </Form>
+    </>
   );
 };
 

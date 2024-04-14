@@ -16,7 +16,9 @@ namespace LMS.Services.Persons.Dto
         public DateTime? RegistrationDate { get; set; }
         public int? BooksBorrowed { get; set; }
         public double? FinesDue { get; set; }
-
+        //credit
         public long? UserId { get; set; }
+
+        public string[] RoleNames { get; set; }
     }
 }

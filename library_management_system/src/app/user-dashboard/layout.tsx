@@ -16,9 +16,9 @@ export default function UserLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <div className={inter.className}>
         {children}   
-        </body>
+      </div>
     </html>
   );
 }

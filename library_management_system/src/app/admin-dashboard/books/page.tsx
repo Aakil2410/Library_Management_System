@@ -6,7 +6,6 @@ import type { TableColumnsType } from 'antd';
 interface DataType {
   title: string;
   author: string;
-  publisher: string;
   category: string;
   isbn: string; 
   numCopies: number;
@@ -30,7 +29,6 @@ const columns: TableColumnsType<DataType> = [
   { title: 'ISBN', dataIndex: 'isbn' },
   { title: 'Category', dataIndex: 'category' },
   { title: 'Status', dataIndex: 'status' },
-  { title: 'Publisher', dataIndex: 'publisher' },
   { title: 'Number of copies', dataIndex: 'numCopies' },
   { title: 'Shelf', dataIndex: 'shelf' },
   {

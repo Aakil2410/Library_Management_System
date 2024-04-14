@@ -29,9 +29,10 @@ const SearchBooks: React.FC = () => {
 
   const { push } = useRouter();
 
-  const handleSearch = async () => {                                            
-    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?key=${process.env.GOOGLE_API_KEY}&langRestrict=en&maxResults=40&orderBy=relevance&q=${searchTerm}+${filter}&printType=books`);
+  const handleSearch = async () => {                            
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?&langRestrict=en&maxResults=40&orderBy=relevance&q=${searchTerm}+${filter}&printType=books`);
     const data = await response.json();
+    console.log(data);
     setBooks(data.items || []);
   };
 

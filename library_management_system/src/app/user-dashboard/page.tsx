@@ -4,6 +4,7 @@ import React from 'react';
 import Head from 'next/head';
 import styles from './/userdashboard.module.css';
 import BooksBorrowed from './books-borrowed/page';
+import withAuth from '../../../HOC/withAuth/page';
 
 interface Book {
   id: string;
@@ -42,7 +43,7 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default Dashboard;
+export default withAuth(Dashboard);
 
 
 

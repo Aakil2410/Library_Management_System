@@ -9,9 +9,10 @@ import {
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Mentions, Menu, theme } from 'antd';
-import Dashboard from './dashboard/page';
+import Dashboard from './main/page';
 import Transaction from './transactions/page';
 import Link from 'next/link';
+import withAuth from '../../../HOC/withAuth/page';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -32,7 +33,7 @@ function getItem(
 }
 
 const navLinks = [
-  { name: "Dashboard", href: "./dashboard" },
+  { name: "Dashboard", href: "./main" },
   { name: "Books", href: "./books" },
   { name: "Reservations", href: "./reservations" },
   { name: "Transactions", href: "./transactions" },
@@ -91,4 +92,4 @@ const AdminLayout= ({
   );
 };
 
-export default AdminLayout;
+export default withAuth(AdminLayout);

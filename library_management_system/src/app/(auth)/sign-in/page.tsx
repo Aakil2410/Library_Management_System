@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useActionState, useState } from "react";
-import { useStyles } from "./style";
+import styles from './signin.module.css';
 
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input } from "antd";
@@ -13,7 +13,6 @@ import { useRouter } from "next/navigation";
 const SignInPage: React.FC = () => {
     
   const { loginUser } = useLoginActions();
-  const { styles } = useStyles();
   const {push} = useRouter();
 
   const onFinish = async (values: ILogin) => {
@@ -58,7 +57,7 @@ const SignInPage: React.FC = () => {
         <Button type="primary" htmlType="submit" className="login-form-button">
           Log in
         </Button>
-        Or <a href="">register now!</a>
+        Or <a href="./sign-up">register now!</a>
       </Form.Item>
     </Form>
   );

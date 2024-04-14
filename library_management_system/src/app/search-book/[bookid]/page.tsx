@@ -17,6 +17,7 @@ interface Book {
       type: string;
       identifier: string;
     };
+    categories: string[];
     imageLinks: {
       thumbnail: string;
     };
@@ -52,11 +53,15 @@ const BookDetails = ({ params }: { params: { bookid: string } }) => {
         <>
           <div className={styles.container}>
             <div className={styles.header}>
-              <img
-                src={book.volumeInfo.imageLinks?.thumbnail}
+              {book.volumeInfo.imageLinks ? <img
+                src={book.volumeInfo.imageLinks.thumbnail}
                 alt={book.volumeInfo.title}
                 className={styles.coverImage}
-              />
+              /> : <img
+              src="https://secure.hearstmagazines.co.uk/Solo/Content/Images/noCover.gif"
+              alt={book.volumeInfo.title}
+              className={styles.coverImage}
+            />}
               <div className={styles.details}>
                 <h1 className={styles.title}>{book.volumeInfo.title}</h1>
                 <h3 className={styles.author}>
@@ -66,11 +71,12 @@ const BookDetails = ({ params }: { params: { bookid: string } }) => {
                   Publisher: {book.volumeInfo.publisher}
                   <span>({book.volumeInfo.publishedDate})</span>
                 </h3>
+                {book.volumeInfo.categories ? <h3>Categories: {book.volumeInfo.categories} </h3> : null}
                 <br />
               </div>
             </div>
             <h4 className={styles.description}>
-              {book.volumeInfo.description}
+              {book.volumeInfo.description ? book.volumeInfo.description : "No Description Available."}
             </h4>
           </div>
         </>
