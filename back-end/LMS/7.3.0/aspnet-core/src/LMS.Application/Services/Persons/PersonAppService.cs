@@ -40,7 +40,7 @@ namespace LMS.Services.Persons
             var person = ObjectMapper.Map<Person>(input);
             person.User = await CreateUserAsync(input);
             person = await _repository.InsertAsync(person);
-            //CurrentUnitOfWork.SaveChanges();
+            CurrentUnitOfWork.SaveChanges();
             return ObjectMapper.Map<PersonDto>(person);
         }
 

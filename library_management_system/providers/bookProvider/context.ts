@@ -27,7 +27,7 @@ export interface IBookStateContext {
 export interface IBookActionContext {
     createBook:(payload:IBook) => void;
     getBooks?:() => void;
-    deleteBook?:(payload:string) => void;
+    deleteBook?:(id:string) => void;
     updateBook?:(payload:IBook) => void;// why capital
 }
 

@@ -15,7 +15,7 @@ import {
 import {
   createUserRequestAction,
   logoutUserRequestAction,
-  getUserIdDetailsRequestAction,
+  getUserIdRequestAction,
   loginUserRequestAction,
   setCurrentUserRequestAction,
 } from "./actions";

@@ -19,6 +19,5 @@ namespace LMS.Services.Persons.Dto
         //credit
         public long? UserId { get; set; }
 
-        public string[] RoleNames { get; set; }
     }
 }

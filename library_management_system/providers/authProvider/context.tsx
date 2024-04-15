@@ -13,20 +13,20 @@ export interface IUser {
   gender: string
   email: string;
   contactNumber: string;
-  address: string;
+  address?: string;
   password: string;
 }
-
-export const INITIAL_STATE: IUserStateContext = {};
-
+ 
 export interface IUserStateContext {
-  readonly createUser?: IUser;
+  readonly createUser?: IUser; 
   readonly UserLogin?: ILogin;
   readonly user?: IUser;
-  readonly userId?: number;
+  readonly userId?: string;
   readonly currentUser?: IUser;
   readonly userLogOut?: IUser;
 }
+
+export const INITIAL_STATE: IUserStateContext = {};
 
 export interface IUserActionContext {
   loginUser?: (payload: ILogin) => void;
@@ -37,8 +37,6 @@ export interface IUserActionContext {
   setUserId?: (userId: number) => void;
 }
 
-const UserContext = createContext<IUserStateContext>(INITIAL_STATE);
+export const UserContext = createContext<IUserStateContext>(INITIAL_STATE);
 
-const UserActionContext = createContext<IUserActionContext>({});
-
-export {UserContext,UserActionContext};
+export const UserActionContext = createContext<IUserActionContext>({});
